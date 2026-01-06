@@ -1,0 +1,1215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florist Boutique - Pure CSS Flower Shop</title>
+
+    <!-- Font Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS Styles (Nature Theme) -->
+    <style>
+        
+        :root {
+            --primary-dark: #386641;              
+            --secondary-accent: #386641;          
+            --secondary-hover: #2F5237;           
+            --card-bg: rgba(255, 255, 255, 0.95); 
+            --text-dark: #1F2937;
+            --gray-100: #F3F4F6;
+            --gray-900: #111827;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); min-height: 10vh; display: flex; flex-direction: column; background-image: url('https://www.pexels.com/photo/through-glass-of-florists-decorating-showcase-of-store-5414334/'); 
+           background-attachment: fixed; background-size: cover; background-position: center; background-color: #E0E0E0; }
+
+      
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+       
+        .page-transition {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            padding-top: 5rem;
+        }
+
+            .page-transition.active {
+                opacity: 1;
+            }
+
+        
+        .main-header {
+            box-shadow: var(--shadow-lg);
+            background-color: var(--card-bg); 
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.875rem; 
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--primary-dark); 
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+            .logo:hover {
+                
+                color: #5E8F66;
+            }
+
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 1rem; 
+        }
+
+        @media (min-width: 768px) {
+            .desktop-nav {
+                display: flex;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        .nav-link, .icon-link {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #4B5563; 
+            transition: color 0.15s, background-color 0.15s;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+            .nav-link:hover, .icon-link:hover {
+                color: var(--primary-dark); 
+                background-color: var(--gray-100);
+            }
+
+        .login-button {
+            background-color: var(--secondary-accent); 
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px; 
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            transition: background-color 0.15s, transform 0.15s;
+        }
+
+            .login-button:hover {
+                background-color: var(--secondary-hover);
+                transform: scale(1.05);
+            }
+
+       
+        .mobile-menu {
+            display: none;
+            background-color: var(--card-bg); 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            padding: 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .mobile-menu-link {
+            color: #4B5563;
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.15s, color 0.15s;
+        }
+
+            .mobile-menu-link:hover {
+                color: var(--primary-dark);
+                background-color: #F9FAFB;
+            }                             
+                                          
+        .mobile-menu-button {             
+            color: var(--primary-dark);
+            border: none;                 
+            background: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+        }
+
+
+        .hero-section {
+            background-color: var(--card-bg); 
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-heading {
+            font-size: 3rem; 
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+            .hero-heading span {
+                color: var(--primary-dark);
+            }
+
+        .hero-text {
+            margin-top: 1rem;
+            font-size: 1.25rem; 
+            color: #4B5563; 
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button {
+            padding: 0.75rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            background-color: var(--secondary-accent); 
+            border-radius: 9999px;
+            box-shadow: var(--shadow-lg);
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+            .cta-button:hover {
+                background-color: var(--secondary-hover);
+                transform: scale(1.05);
+            }
+
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 28rem;
+            height: auto;
+            border-radius: 1.5rem; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.5s;
+            border: 8px solid var(--gray-100);
+            object-fit: cover; 
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                gap: 2.5rem;
+            }
+
+                .hero-content > div:first-child {
+                    width: 50%;
+                }
+
+                .hero-content > div:last-child {
+                    width: 50%;
+                    margin-top: 0;
+                }
+
+            .hero-heading {
+                font-size: 4rem; 
+                text-align: left;
+            }
+
+            .hero-cta-group {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .hero-image-wrapper {
+                justify-content: flex-end;
+            }
+
+            .hero-image {
+                max-width: 32rem;
+                height: 25rem; 
+            }
+        }
+        .featured-products-section {
+            padding: 4rem 0;
+            background-color: transparent; 
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--gray-900);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .product-card {
+            background-color: var(--card-bg); 
+            border-radius: 1rem; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+            .product-card:hover {
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+                transform: scale(1.02);
+            }
+
+            .product-card img {
+                width: 100%;
+                height: 14rem; 
+                object-fit: cover;
+            }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+            .product-details h3 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--gray-900);
+            }
+
+            .product-details p {
+                margin-top: 0.5rem;
+                color: #6B7280;
+            }
+
+            .product-details .price {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-dark);
+                margin-top: 1rem;
+            }
+
+        
+        .shop-page-section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            background-color: transparent; 
+        }
+
+        .shop-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark); 
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .shop-subtitle {
+            margin-top: 0.75rem;
+            font-size: 1.25rem;
+            color: #374151; 
+            text-align: center;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .shop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .shop-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .shop-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .shop-card {
+            background-color: var(--card-bg); 
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gray-100);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+            .shop-card:hover {
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                transform: translateY(-0.25rem);
+            }
+
+            .shop-card img {
+                width: 100%;
+                height: 12rem;
+                object-fit: cover;
+            }
+
+        .shop-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .shop-card-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-accent); 
+        }
+
+        .shop-add-btn {
+            background-color: var(--primary-dark); 
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            box-shadow: var(--shadow-md);
+            transition: background-color 0.2s;
+        }
+
+            .shop-add-btn:hover {
+                background-color: #2F5237; 
+            }
+      
+        .about-section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            background-color: var(--card-bg); 
+        }
+
+        .about-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark); 
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .about-text-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .about-text-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+                .about-text-content > div:first-child {
+                    order: 2;
+                }
+
+                .about-text-content > div:last-child {
+                    order: 1;
+                }
+        }
+
+        .about-text h3 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: #374151; 
+            margin-bottom: 1.5rem;
+        }
+
+        .quote {
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+            .quote p:first-child {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--secondary-accent); 
+            }
+
+        .about-image {
+            width: 100%;
+            height: 25rem; 
+            object-fit: cover;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 8px solid var(--gray-100); 
+        }
+
+        .form-section {
+            padding: 5rem 0;
+            background-color: transparent;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-card {
+            max-width: 42rem;
+            width: 100%;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg); 
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-card {
+            max-width: 28rem;
+            background-color: var(--card-bg); 
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-top: 8px solid var(--secondary-accent); 
+        }
+
+            .login-card .title {
+                font-size: 1.875rem;
+                font-weight: 700;
+                color: var(--gray-900);
+                font-family: 'Playfair Display', serif;
+            }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .input-label {
+            display: block;
+            text-align: left;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+            .text-input:focus {
+                outline: none;
+                border-color: var(--secondary-accent); 
+                box-shadow: 0 0 0 3px rgba(56, 102, 65, 0.5); 
+            }
+        .cart-section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            background-color: var(--card-bg); 
+        }
+
+        .cart-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark); 
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .cart-summary {
+            background-color: var(--gray-100); 
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cart-message {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+
+        .cart-total-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #9CA3AF; 
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+            .cart-total-line span:first-child {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--gray-900);
+            }
+
+            .cart-total-line span:last-child {
+                font-size: 1.875rem;
+                font-weight: 800;
+                color: var(--secondary-accent); 
+            }
+
+        
+        .main-footer {
+            background-color: var(--gray-900);
+            color: white;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            color: var(--secondary-accent); 
+        }
+
+        .footer-text, .footer-link {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-accent); 
+            transition: color 0.15s;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid #1F2937; 
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+
+        
+        #message-box {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+            padding: 1rem;
+            color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, opacity 0.3s;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+            #message-box.hidden {
+                opacity: 0;
+                transform: translateY(1rem);
+            }
+
+
+        .msg-success {
+            background-color: var(--primary-dark);
+        }
+
+        .msg-info {
+            background-color: #5E8F66;
+        }
+        .msg-error {
+            background-color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="main-header">
+        <nav class="container nav-content">
+            <a onclick="navigateTo('home')" class="logo">
+                Florist Boutique
+            </a>
+
+            
+            <div class="desktop-nav">
+                
+                <a onclick="navigateTo('home')" class="nav-link">Home</a>
+                <a onclick="navigateTo('shop')" class="nav-link">Shop</a>
+                <a onclick="navigateTo('about')" class="nav-link">About Us</a>
+
+                <div style="width: 1rem;"></div>
+
+               
+                <a onclick="navigateTo('search')" class="icon-link" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+                </a>
+                <a onclick="navigateTo('cart')" class="icon-link" title="Shopping Cart" style="position: relative;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="20" r="1" /><circle cx="19" cy="20" r="1" /><path d="M2.5 2h1.5l1.5 12h13.5l3-9H5" /></svg>
+                    
+                    <span style="position: absolute; top: -0.25rem; right: -0.25rem; display: flex; height: 1rem; width: 1rem; align-items: center; justify-content: center; border-radius: 50%; background-color: var(--primary-dark); color: white; font-size: 0.75rem; font-weight: 700; line-height: 1;">3</span>
+                </a>
+
+                
+                <a onclick="navigateTo('login')" class="login-button ml-4">
+                    Login
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <svg class="w-6 h-6" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a onclick="navigateTo('home')" class="mobile-menu-link">Home</a>
+            <a onclick="navigateTo('shop')" class="mobile-menu-link">Shop</a>
+            <a onclick="navigateTo('about')" class="mobile-menu-link">About Us</a>
+
+            <a onclick="navigateTo('search')" class="mobile-menu-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+                <span>Search</span>
+            </a>
+            <a onclick="navigateTo('cart')" class="mobile-menu-link" style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="20" r="1" /><circle cx="19" cy="20" r="1" /><path d="M2.5 2h1.5l1.5 12h13.5l3-9H5" /></svg>
+                <span>Cart (3 items)</span>
+            </a>
+
+            <a onclick="navigateTo('login')" class="login-button mt-3" style="text-align: center;">
+                Login / Register
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Area - Renders the current "page" content -->
+    <main id="app-content" style="flex-grow: 1;"></main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div style="grid-column: span 2;">
+                    <p class="footer-logo">Florist Boutique</p>
+                    <p class="footer-text mt-3">
+                        Sustainably sourced, beautifully arranged, and delivered with love.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0; margin-top: 0.5rem; line-height: 1.75;">
+                        <li><a onclick="navigateTo('home')" class="footer-link">Home</a></li>
+                        <li><a onclick="navigateTo('shop')" class="footer-link">Shop</a></li>
+                        <li><a onclick="navigateTo('about')" class="footer-link">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Support</h4>
+                    <ul style="list-style: none; padding: 0; margin-top: 0.5rem; line-height: 1.75;">
+                        <li><a href="#" class="footer-link">Shipping Info</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Follow Us</h4>
+                    <p class="footer-text">Instagram: @floristboutique</p>
+                    <p class="footer-text">Email: hello@floristboutique.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="current-year"></span> Florist Boutique. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Page Routing and Interactivity -->
+    <script>
+       
+
+        const appContent = document.getElementById('app-content');
+
+        
+        const imageAssets = {
+            hero: 'https://images.pexels.com/photos/74512/pexels-photo-74512.jpeg',
+            featuredTulips: 'https://images.pexels.com/photos/10534000/pexels-photo-10534000.jpeg',
+            featuredRoses: 'https://images.unsplash.com/photo-1548094967-e25a127d1f6d?q=80&w=923&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            featuredLilies: 'https://plus.unsplash.com/premium_photo-1736818881512-622f7553168c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            about: 'https://media.gettyimages.com/id/2149197318/photo/a-bouquet-of-pink-and-white-flowers-with-a-mix-of-roses-and-daisies-artificial-flowers.jpg?s=612x612&w=0&k=20&c=YxuKuHKTk92F7IFjPq2kHCs1cT7Ht6Klpdic71IB4Ic=',
+            
+            anniversary: 'https://media.gettyimages.com/id/2191728366/photo/a-wedding-bouquet-of-roses-tied-with-a-white-ribbon-lies-on-a-gray-chair.jpg?s=612x612&w=0&k=20&c=PAFCf6Iyzjhv_cGDAtPs1L4jH5sGykTcbCb5nfV4N-s=',                      // Rich red/pink rose bouquet
+            sunflowers:  ' https://media.gettyimages.com/id/2216115785/photo/florist-holding-a-bouquet-of-sunflowers-and-chrysanthemums.jpg?s=612x612&w=0&k=20&c=VuR9mXvKsxHR4ECTqA4JOENtLsxn3rlO4h0ivKw0hsQ=',                       // Close-up of bright sunflowers
+            pastelDream: 'https://media.gettyimages.com/id/832350420/photo/pink-guara-flowers-in-full-bloom-flower-immersion.jpg?s=612x612&w=0&k=20&c=WO0AT8cgF7hP6fS6tHe1yzZyHXYzlKxM_DclnQAq0Qg=',                      // Soft, modern pastel bouquet
+            orchidPot: 'https://media.gettyimages.com/id/700743191/photo/potted-orchid-flower-on-table-in-living-room.jpg?s=612x612&w=0&k=20&c=Z4_bzsUi3zklSBZeUZ5PSuyUVFRbaQ5SmEFV7cMYmT4=',                       // Sophisticated white orchid
+            sympathyWreath: 'https://media.gettyimages.com/id/690916848/photo/portrait-of-two-fresh-and-lovely-women.jpg?s=612x612&w=0&k=20&c=7xgLZXRbPHaqiF1Ljxj6fu1p2TZbLfTyCiimAuPD3WA=',                   // White Wreath (kept this one)
+            newBaby: 'https://media.gettyimages.com/id/1576288829/photo/sweet-newborn-baby-immersed-in-the-fragrant-beauty-of-lilac-flowers-clad-in-green-cotton.jpg?s=612x612&w=0&k=20&c=NEKzrq53Mok_eURx0b6hO41ahBnek0iYsveVo6fZXgU=',                        // Soft yellow/cream arrangement
+            corporate: 'https://media.gettyimages.com/id/1342421413/photo/businesspeople-celebrating-colleagues-birthday-at-office.jpg?s=612x612&w=0&k=20&c=RmrQjeE0peXsIQBGwGhjI2BvYgbdXmEPSzO5x-gsTh0=',                        // Clean, green and white structured arrangement
+            justBecause: 'https://media.gettyimages.com/id/97280662/photo/united-states-flowers-mark-the-spot-on-rockaway-parkway-at-ave-b-where-beloved-grandfather.jpg?s=612x612&w=0&k=20&c=yJ--9WriqUBvtxcZauMqcIFtesluVSHEDFLSmiAOhFo=',                     // Spontaneous mix (kept this one)
+        };
+
+       
+        const getImageUrl = (key, fallbackText) => {
+            const url = imageAssets[key] || '';
+            const errorFallback = `this.onerror=null; this.src='https://placehold.co/400x300/386641/FFFFFF?text=${fallbackText.replace(/ /g, '+')}'`;
+            return { url, errorFallback };
+        };
+
+        const renderHome = () => {
+            const heroImg = getImageUrl('hero', 'Featured Bouquet');
+            const tulipImg = getImageUrl('featuredTulips', 'Spring Tulips');
+            const roseImg = getImageUrl('featuredRoses', 'Red Roses');
+            const lilyImg = getImageUrl('featuredLilies', 'Sympathy Lilies');
+
+            return `
+                    <!-- Home Page HTML -->
+                    <section class="hero-section">
+                        <div class="container hero-content">
+                            <div>
+                                <h1 class="hero-heading">
+                                    <span>Fresh Flowers</span>, Delivered Daily
+                                </h1>
+                                <p class="hero-text">
+                                    Discover the perfect arrangement for any moment. Order before noon for same-day delivery.
+                                </p>
+                                <div class="hero-cta-group">
+                                    <button onclick="navigateTo('shop')" class="cta-button">
+                                        Shop Collection
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="hero-image-wrapper">
+                                <img src="${heroImg.url}"
+                                     alt="Featured Flower Arrangement"
+                                     class="hero-image"
+                                     onerror="${heroImg.errorFallback}">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Home - Featured Products HTML -->
+                    <section class="featured-products-section">
+                        <div class="container">
+                            <div style="text-align: center; margin-bottom: 3rem;">
+                                <h2 class="section-title">
+                                    Seasonal Highlights
+                                </h2>
+                            </div>
+                            <div class="product-grid">
+                                <!-- Card 1 -->
+                                <div class="product-card" onclick="navigateTo('shop')">
+                                    <img src="${tulipImg.url}"
+                                         alt="Spring Tulip Bouquet"
+                                         onerror="${tulipImg.errorFallback}">
+                                    <div class="product-details">
+                                        <h3>Spring Tulip Mix</h3>
+                                        <p>Brighten any room with fresh, seasonal color.</p>
+                                        <span class="price">$49.99</span>
+                                    </div>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="product-card" onclick="navigateTo('shop')">
+                                    <img src="${roseImg.url}"
+                                         alt="Red Rose Bouquet"
+                                         onerror="${roseImg.errorFallback}">
+                                    <div class="product-details">
+                                        <h3>The Classic Dozen</h3>
+                                        <p>Deep red roses, the ultimate romantic gesture.</p>
+                                        <span class="price">$79.00</span>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div class="product-card" onclick="navigateTo('shop')">
+                                    <img src="${lilyImg.url}"
+                                         alt="White Lily Bouquet"
+                                         onerror="${lilyImg.errorFallback}">
+                                    <div class="product-details">
+                                        <h3>Elegant Sympathy</h3>
+                                        <p>A peaceful and dignified arrangement.</p>
+                                        <span class="price">$65.50</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        };
+
+        const renderShop = () => {
+            const productCard = (name, price, text, imageKey) => {
+                const img = getImageUrl(imageKey, name);
+                return `
+                        <div class="shop-card">
+                            <img src="${img.url}" alt="${name}" onerror="${img.errorFallback}">
+                            <div style="padding: 1.5rem;">
+                                <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.5rem;">${name}</h3>
+                                <p style="color: #6B7280; font-size: 0.875rem; margin-bottom: 1rem;">${text}</p>
+                                <div class="shop-card-footer">
+                                    <span class="shop-card-price">${price}</span>
+                                    <button class="shop-add-btn" onclick="showMessage('${name} added to cart!', 'success')">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            };
+
+            return `
+                    <!-- Shop Page HTML -->
+                    <section class="shop-page-section">
+                        <div class="container">
+                            <div style="text-align: center; margin-bottom: 2.5rem;">
+                                <h2 class="shop-title">Shop Our Flower Collections</h2>
+                                <p class="shop-subtitle">Find bouquets for birthdays, anniversaries, corporate events, and more.</p>
+                            </div>
+
+                            <div class="shop-grid">
+                                ${productCard("The Anniversary", "$95.00", "A vibrant mix of pink and purple blooms.", 'anniversary')}
+                                ${productCard("Joyful Sunflowers", "$45.00", "Bright yellow sunflowers and greens.", 'sunflowers')}
+                                ${productCard("The Pastel Dream", "$68.50", "Soft peonies, lavender, and white roses.", 'pastelDream')}
+                                ${productCard("Modern Orchid Pot", "$120.00", "A stylish, low-maintenance desk orchid.", 'orchidPot')}
+                                ${productCard("Sympathy Wreath", "$72.99", "White lilies and carnations, simple and respectful.", 'sympathyWreath')}
+                                ${productCard("New Baby Bouquet", "$60.00", "Soft yellows and creams, perfect for a nursery.", 'newBaby')}
+                                ${productCard("Corporate Arrangement", "$85.00", "Clean, structured green and white display.", 'corporate')}
+                                ${productCard("Just Because", "$39.99", "A spontaneous, cheerful small arrangement.", 'justBecause')}
+                            </div>
+                        </div>
+                    </section>
+                `;
+        };
+
+        const renderAbout = () => {
+            const aboutImg = getImageUrl('about', 'Sustainability Commitment');
+            return `
+                    <!-- About Us Page HTML -->
+                    <section class="about-section">
+                        <div class="container">
+                            <div style="text-align: center; margin-bottom: 3rem;">
+                                <h2 class="about-title">Our Commitment to Nature</h2>
+                                <p class="shop-subtitle" style="max-width: 48rem; margin: 0.75rem auto;">We are more than a flower shop; we are curators of natural beauty, ethically sourced.</p>
+                            </div>
+
+                            <div class="about-text-content">
+                                <div class="about-text" style="line-height: 1.5;">
+                                    <h3>Sustainability First</h3>
+                                    <p>
+                                        Founded 15 years ago, Florist Boutique set out to change the way flowers are bought and delivered. Every flower we sell is sourced from farms that adhere to strict ecological standards, minimizing water waste and avoiding harmful pesticides.
+                                    </p>
+                                    <p>
+                                        Our commitment extends to our packaging, which is 100% recyclable or compostable. We believe that celebrating beauty shouldn't cost the Earth. We deliver not just flowers, but a promise of quality and sustainability.
+                                    </p>
+                                    <div class="quote">
+                                        <p>"The earth laughs in flowers."</p>
+                                        <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.25rem;">- Ralph Waldo Emerson</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="${aboutImg.url}"
+                                         alt="Sustainability and ethical sourcing"
+                                         class="about-image"
+                                         onerror="${aboutImg.errorFallback}">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        };
+
+        const renderSearch = () => {
+            return `
+                    <!-- Search Page HTML -->
+                    <section class="form-section">
+                        <div class="container form-card">
+                            <h2 class="shop-title" style="margin-bottom: 1.5rem;">Search Florist Boutique</h2>
+                            <form onsubmit="event.preventDefault(); showMessage('Searching for ' + document.getElementById('search-input').value + '...', 'info');">
+                                <input type="text" id="search-input" required placeholder="Enter bouquet name or color..."
+                                       class="text-input" style="margin-bottom: 1rem;">
+                                <button type="submit"
+                                        class="cta-button" style="width: 100%;">
+                                    Find Now
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+                `;
+        };
+
+        const renderCart = () => {
+            return `
+                    <!-- Cart Page HTML -->
+                    <section class="cart-section">
+                        <div class="container" style="max-width: 56rem; margin-top: 2rem;">
+                            <h2 class="cart-title">Your Shopping Cart</h2>
+
+                            <!-- Cart Items Placeholder -->
+                            <div class="cart-summary">
+                                <p class="cart-message">
+                                    You currently have 3 items in your cart. <br> Time to checkout and send some joy!
+                                </p>
+
+                                <div class="cart-total-line">
+                                    <span>Subtotal:</span>
+                                    <span>$223.49</span>
+                                </div>
+
+                                <button onclick="showMessage('Proceeding to Checkout! (Placeholder)', 'success')"
+                                        class="cta-button" style="width: 100%; margin-top: 1.5rem; background-color: var(--primary-dark);">
+                                    Proceed to Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        };
+
+
+        const renderLogin = () => {
+            return `
+                    <!-- Login Page HTML -->
+                    <section class="form-section">
+                        <div class="login-card" style="padding: 2rem; margin: 1rem;">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <h2 class="title">Customer Login</h2>
+                                <p style="margin-top: 0.5rem; color: #6B7280;">Access your saved addresses and order history.</p>
+                            </div>
+
+                            <form onsubmit="event.preventDefault(); showMessage('Login successful! (Placeholder action)', 'success');">
+                                <!-- Email Input -->
+                                <div class="input-group">
+                                    <label for="email" class="input-label">Email Address</label>
+                                    <input type="email" id="email" required placeholder="you@example.com"
+                                           class="text-input">
+                                </div>
+
+                                <!-- Password Input -->
+                                <div class="input-group">
+                                    <label for="password" class="input-label">Password</label>
+                                    <input type="password" id="password" required placeholder="••••••••"
+                                           class="text-input">
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit"
+                                        class="cta-button" style="width: 100%; background-color: var(--primary-dark); margin-top: 0.5rem;">
+                                    Secure Login
+                                </button>
+                            </form>
+
+                            <div style="margin-top: 1.5rem; text-align: center;">
+                                <a onclick="showMessage('Forgot Password functionality activated!', 'info');" style="font-size: 0.875rem; color: var(--primary-dark); cursor: pointer;">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        };
+
+       
+        const renderPage = (pageName) => {
+            let content = '';
+
+            
+            switch (pageName) {
+                case 'home': content = renderHome(); break;
+                case 'shop': content = renderShop(); break;
+                case 'about': content = renderAbout(); break;
+                case 'login': content = renderLogin(); break;
+                case 'search': content = renderSearch(); break;
+                case 'cart': content = renderCart(); break;
+                default: content = renderHome(); 
+            }
+
+            window.scrollTo(0, 0); 
+
+            
+            const oldContent = appContent.querySelector('.page-transition');
+
+            if (oldContent) {
+                oldContent.classList.remove('active');
+
+                setTimeout(() => {
+                   
+                    appContent.innerHTML = `<div class="page-transition">${content}</div>`;
+
+                    
+                    setTimeout(() => {
+                        appContent.querySelector('.page-transition').classList.add('active');
+                    }, 50); 
+                }, 400); 
+            } else {
+               
+                appContent.innerHTML = `<div class="page-transition">${content}</div>`;
+                setTimeout(() => {
+                    appContent.querySelector('.page-transition').classList.add('active');
+                }, 50);
+            }
+
+           
+            history.pushState(null, '', `#${pageName}`);
+
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('svg path').setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+            }
+        };
+
+       
+        const showMessage = (message, type = 'info') => {
+            
+            let messageBox = document.getElementById('message-box');
+            if (!messageBox) {
+                messageBox = document.createElement('div');
+                messageBox.id = 'message-box';
+                document.body.appendChild(messageBox);
+            }
+
+            
+            messageBox.className = ''; 
+            messageBox.classList.add(`msg-${type}`);
+            messageBox.textContent = message;
+
+           
+            messageBox.classList.remove('hidden');
+
+           
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 3000);
+        };
+
+      
+        window.navigateTo = renderPage;
+
+
+       
+        document.addEventListener('DOMContentLoaded', () => {
+           
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const iconPath = mobileMenuButton.querySelector('svg path');
+                if (mobileMenu.classList.contains('hidden')) {
+                   
+                    iconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                } else {
+                    
+                    iconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                }
+            });
+
+            
+            const initialPage = window.location.hash.substring(1) || 'home';
+            renderPage(initialPage);
+
+            
+            window.addEventListener('popstate', () => {
+                const statePage = window.location.hash.substring(1) || 'home';
+                renderPage(statePage);
+            });
+        });
+    </script>
+</body>
+</html>
